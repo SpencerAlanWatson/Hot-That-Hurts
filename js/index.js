@@ -7,7 +7,7 @@
         stage = new PIXI.Stage(0x0, true),
         imgDir = "imgs/";
     var transparentTexture = textureFromImage('transparent_1x1.gif'),
-        mainPageTexture = textureFromImage("floorplan_mod.png"),
+        mainPageTexture = textureFromImage("floorplan_mod.jpg"),
         kitchenTexture = textureFromImage("kitchen_mod.jpg"),
         livingRoomTexture = textureFromImage("livingroom_mod.jpg"),
         backgroundSprite = new PIXI.Sprite(transparentTexture);

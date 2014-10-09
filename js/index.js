@@ -95,9 +95,9 @@
             scale = new PIXI.Point(mainPageTexture.width, mainPageTexture.height / 2);
 
         livingRoomHitArea.scale = scale;
-        livingRoomHitArea.position = new PIXI.Point(0, 0);
+        livingRoomHitArea.position = new PIXI.Point(0, mainPageTexture.height / 2);
         kitchenHitArea.scale = scale;
-        kitchenHitArea.position = new PIXI.Point(0, mainPageTexture.height / 2);
+        kitchenHitArea.position = new PIXI.Point(0, 0);
 
         livingRoomHitArea.mousedown = changeStage.bind(this, "#LivingRoom");
         kitchenHitArea.mousedown = changeStage.bind(this, "#Kitchen");

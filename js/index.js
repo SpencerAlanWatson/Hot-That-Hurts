@@ -92,10 +92,10 @@
         backgroundSprite.setTexture(mainPageTexture);
         var livingRoomHitArea = new PIXI.Sprite(transparentTexture),
             kitchenHitArea = new PIXI.Sprite(transparentTexture),
-            scale = new PIXI.Point(mainPageTexture.width, mainPageTexture.height / 2);
+            scale = new PIXI.Point(1204, 450);
 
         livingRoomHitArea.scale = scale;
-        livingRoomHitArea.position = new PIXI.Point(0, mainPageTexture.height / 2);
+        livingRoomHitArea.position = new PIXI.Point(0, 450);
         kitchenHitArea.scale = scale;
         kitchenHitArea.position = new PIXI.Point(0, 0);
 

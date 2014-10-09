@@ -5,7 +5,7 @@
         //926 600
         renderer = PIXI.autoDetectRenderer(1204, 900, canvasElement, false, false),
         stage = new PIXI.Stage(0x0, true),
-        imgDir = "/imgs/";
+        imgDir = "../imgs/";
     var transparentTexture = textureFromImage('transparent_1x1.gif'),
         mainPageTexture = textureFromImage("floorplan_mod.png"),
         kitchenTexture = textureFromImage("kitchen_mod.jpg"),

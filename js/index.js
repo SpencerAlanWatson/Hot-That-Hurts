@@ -98,6 +98,8 @@
         sprite.setInteractive(true);
         sprite.buttonMode = true;
         return sprite;
+    }
+    
     function MainPage() {
         backgroundSprite.setTexture(mainPageTexture);
         var scale = new PIXI.Point(1204, 450);

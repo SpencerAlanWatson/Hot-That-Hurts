@@ -71,7 +71,7 @@
         else
             actuallyChangeStage("");
     }
-    function actuallyChangeStage(Room) {
+    function changeStage(Room) {
         if (stage.children.length > 0) {
             emptyStage();
         }
@@ -89,7 +89,7 @@
             break;
         }
     }
-    function changeStage(Room) {
+    function sschangeStage(Room) {
         
         history.pushState(location.hash, location.hash.substr(1), location.toString());
 

@@ -65,13 +65,18 @@
             stage.removeChild(children[i]);
         }
     }
-
+window.onpopstate = function(event) {
+    changeStage(event.state);
+}
     function changeStage(Room) {
+        
+        history.pushState(location.hash, location.hash.substr(1), location.toString());
+
         if (stage.children.length > 0) {
             emptyStage();
         }
+
         location.hash = Room;
-        history.pushState(location.toString());
         switch (Room) {
         case "#LivingRoom":
             LivingRoom();

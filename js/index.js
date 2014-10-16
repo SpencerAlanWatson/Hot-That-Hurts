@@ -65,13 +65,13 @@
             stage.removeChild(children[i]);
         }
     }
-window.onpopstate = function(event) {
-    changeStage(event.state);
-}
-    function changeStage(Room) {
-        
-        history.pushState(location.hash, location.hash.substr(1), location.toString());
-
+    window.onpopstate = function(event) {
+        if(event.state) 
+            actuallyChangeStage(event.state);
+        else
+            actuallyChangeStage("");
+    }
+    function actuallyChangeStage(Room) {
         if (stage.children.length > 0) {
             emptyStage();
         }
@@ -88,6 +88,12 @@ window.onpopstate = function(event) {
             MainPage();
             break;
         }
+    }
+    function changeStage(Room) {
+        
+        history.pushState(location.hash, location.hash.substr(1), location.toString());
+
+        
     }
     //176, 390
     //192, 720

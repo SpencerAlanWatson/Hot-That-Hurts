@@ -30,6 +30,8 @@
         this.texture = textureFromImage(textureImage);
         this.sprite = new PIXI.Sprite(transparentTexture);
         this.isMouseOver = false;
+        this.buttonMode = true;
+        this.defaultCursor = "crosshair";
         if (this.texture.baseTexture.hasLoaded) {
             this.sprite.scale = new PIXI.Point(this.texture.width, this.texture.height);
         } else {
@@ -69,6 +71,7 @@
             emptyStage();
         }
         location.hash = Room;
+        history.pushState(location.toString());
         switch (Room) {
         case "#LivingRoom":
             LivingRoom();
@@ -87,34 +90,26 @@
     //980
     //160
     //647, 420
-
+    function createHitArea(scale, position, mousedown) {
+        var sprite = new PIXI.Sprite(transparentTexture);
+        sprite.scale = scale;
+        sprite.position = position;
+        sprite.mousedown = mousedown;
+        sprite.setInteractive(true);
+        sprite.buttonMode = true;
+        return sprite;
     function MainPage() {
         backgroundSprite.setTexture(mainPageTexture);
-        var livingRoomHitArea = new PIXI.Sprite(transparentTexture),
-            kitchenHitArea = new PIXI.Sprite(transparentTexture),
-            scale = new PIXI.Point(1204, 450);
-
-        livingRoomHitArea.scale = scale;
-        livingRoomHitArea.position = new PIXI.Point(0, 450);
-        kitchenHitArea.scale = scale;
-        kitchenHitArea.position = new PIXI.Point(0, 0);
-
-        livingRoomHitArea.mousedown = changeStage.bind(this, "#LivingRoom");
-        kitchenHitArea.mousedown = changeStage.bind(this, "#Kitchen");
-
-        livingRoomHitArea.setInteractive(true);
-        kitchenHitArea.setInteractive(true);
-        stage.addChild(livingRoomHitArea);
-        stage.addChild(kitchenHitArea);
+        var scale = new PIXI.Point(1204, 450);
+        stage.addChild(createHitArea(scale, new PIXI.Point(0, 450), changeStage.bind(this, "#LivingRoom")));
+        stage.addChild(createHitArea(scale, new PIXI.Point(0, 0), changeStage.bind(this, "#Kitchen")));
 
     }
 
     function Kitchen() {
 
         backgroundSprite.setTexture(kitchenTexture);
-        window.bSprite = new PIXI.Text("Go Back");
-        bSprite.interactive = true;
-        bSprite.mousedown = changeStage.bind(this, "#MainPage");
+
 
         window.tSprite = new overSprite('toaster_mod.gif', new PIXI.Point(917, 206));
         window.fSprite = new overSprite('faucet_mod.gif', new PIXI.Point(361, 291));
@@ -122,28 +117,37 @@
         //window.ufsprite2 = new unhappyFaceSprite(new PIXI.Point(555, 315));
         //ufsprite2.sprite.scale = new PIXI.Point(1.5, 1.5);
         //window.ufsprite3 = new unhappyFaceSprite(new PIXI.Point(555, 150));
-        stage.addChild(bSprite);
 
         stage.addChild(fSprite.sprite);
         stage.addChild(tSprite.sprite);
         stage.addChild(spSprite.sprite);
+        
+        
+        window.bSprite = new PIXI.Text("Go Back");
+        bSprite.interactive = true;
+        bSprite.mousedown = changeStage.bind(this, "#MainPage");
+        bSprite.buttonMode = true;
+        stage.addChild(bSprite);
+                
+
     }
 
     function LivingRoom() {
         backgroundSprite.setTexture(livingRoomTexture);
-
-        window.bSprite = new PIXI.Text("Go Back");
-        bSprite.interactive = true;
-        bSprite.mousedown = changeStage.bind(this, "#MainPage");
 
         window.fpSprite = new overSprite('fireplace_mod.gif', new PIXI.Point(34, 400));
         window.cSprite = new overSprite('candles_mod.gif', new PIXI.Point(505, 446));
         //window.ufsprite2 = new unhappyFaceSprite(new PIXI.Point(555, 315));
         //ufsprite2.sprite.scale = new PIXI.Point(1.5, 1.5);
         //window.ufsprite3 = new unhappyFaceSprite(new PIXI.Point(555, 150));
-        stage.addChild(bSprite);
         stage.addChild(fpSprite.sprite);
         stage.addChild(cSprite.sprite);
+        
+        window.bSprite = new PIXI.Text("Go Back");
+        bSprite.interactive = true;
+        bSprite.mousedown = changeStage.bind(this, "#MainPage");
+        bSprite.buttonMode = true;
+        stage.addChild(bSprite);
     }
     //stage.addChild(ufsprite3.sprite);
 
